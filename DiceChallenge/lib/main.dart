@@ -30,6 +30,11 @@ class _DiceHomePageState extends State<DiceHomePage> {
 
   final Random random = Random();
 
+  int get total => leftDiceNumber + rightDiceNumber;
+
+  Color get counterColor =>
+      total < 6 ? Colors.red : Colors.blue;
+
   void rollDice() {
     setState(() {
       leftDiceNumber = random.nextInt(6) + 1;
@@ -39,8 +44,6 @@ class _DiceHomePageState extends State<DiceHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    int total = leftDiceNumber + rightDiceNumber;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Dice App Cayanan'),
@@ -64,21 +67,22 @@ class _DiceHomePageState extends State<DiceHomePage> {
                 ),
               ],
             ),
-
             const SizedBox(height: 30),
             Text(
               'Total: $total',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
+                color: counterColor,
               ),
             ),
-
             const SizedBox(height: 30),
             ElevatedButton(
               onPressed: rollDice,
               child: const Text('Roll Dice'),
             ),
+             if (total == 7) 
+              const Text('Congratulations You Won The Jackpot!'),
           ],
         ),
       ),
