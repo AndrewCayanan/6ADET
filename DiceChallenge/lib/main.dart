@@ -43,7 +43,7 @@ class _DiceHomePageState extends State<DiceHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Dice App'),
+        title: const Text('Flutter Dice App Cayanan'),
         centerTitle: true,
       ),
       body: Center(
